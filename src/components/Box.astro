@@ -1,0 +1,16 @@
+---
+export interface Props {
+  title: string;
+  text: string;
+  iconPath: string;
+}
+const { title, text, iconPath } = Astro.props;
+---
+
+<div class="border-2 border-black p-4">
+  <div class="flex gap-2 mb-4">
+    <img class="w-8" src={iconPath} alt="" />
+    <h3 class="text-xl font-medium">{title}</h3>
+  </div>
+  <p>{text}</p>
+</div>

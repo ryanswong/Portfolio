@@ -1,3 +1,7 @@
+[ ] Check if rounded corners on scroll bars work on other browsers
+[ ] fix expanded tags
+
+
 # Astro Starter Kit: Basics
 
 ```

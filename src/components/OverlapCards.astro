@@ -1,0 +1,92 @@
+---
+import Tag from "./Tag.astro";
+
+export interface Props {
+  title: string;
+  imagePath: string;
+  tags?: string[];
+  swapSides?: boolean; // only matters for desktop version
+}
+const { title, tags, imagePath, swapSides = false } = Astro.props;
+
+const tagsStyle = `flex flex-wrap gap-2 w-3/5 ${
+  swapSides ? "" : "ml-auto justify-end"
+}`;
+---
+
+<!-- mobile size -->
+<div class="md:hidden w-full">
+  <div class="relative h-contain">
+    <!-- Image -->
+    <img class="object-contain" src={imagePath} alt="" />
+
+    <!-- Title -->
+    <div class="absolute top-0 bg-white bg-opacity-50 w-full py-2 px-4">
+      <h3 class=`text-2xl font-medium`>
+        {title}
+      </h3>
+    </div>
+  </div>
+
+  <div class="bg-gray-200 bg-opacity-80 px-4 pt-2 pb-6">
+    <!-- Description -->
+    <!-- <p>{description}</p> -->
+    <slot name="description"/>
+    
+    <!-- Tags -->
+    {
+      tags && (
+        <div class="flex flex-wrap gap-2 mt-4">
+          {tags.map((tag) => (
+            <Tag text={tag} additionalStyles="shadow-lg py-0.5 px-2" />
+          ))}
+        </div>
+      )
+    }
+  </div>
+</div>
+
+<!-- desktop size -->
+<div class="relative hidden md:block">
+  <!-- image -->
+  <img
+    class=`object-contain w-3/5 ${swapSides && "ml-auto"}`
+    src={imagePath}
+    alt=""
+  />
+
+  <div
+    class=`absolute w-3/5 flex flex-1 flex-col justify-evenly ${swapSides ? "top-0 bottom-0 left-0" : "top-0 bottom-0 right-0 text-right"}`
+  >
+    <!-- Title -->
+
+    <!-- FIXME -->
+    <h3 class=`w-2/5 text-2xl font-medium ${swapSides ? "" : "ml-auto"}`>
+      {title}
+    </h3>
+
+    <!-- Description -->
+    <div
+      class=`w-full bg-gray-200 bg-opacity-80 pr-8 pl-6 py-3 shadow-lg h-1/2 overflow-auto scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-200 ${swapSides ? "" : "ml-auto"}`
+    >
+      <!-- <p>{description}</p> -->
+      <!-- <slot name="description"/> -->
+
+      <p>
+        Designed 3d molecular visualization
+      </p>
+
+    </div>
+
+    <!-- Tags -->
+    {
+      tags && (
+        <div class={tagsStyle}>
+          {tags.map((tag) => (
+            <Tag text={tag} additionalStyles="shadow-lg" />
+          ))}
+        </div>
+      )
+    }
+  </div>
+</div>

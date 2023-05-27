@@ -1,82 +1,129 @@
 ---
-import '../styles/global.scss';
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Header from "../components/Header.astro";
+import Subsection from "../layouts/Subsection.astro";
+import Box from "../components/Box.astro";
+import Tag from "../components/Tag.astro";
+import Layout from "../layouts/Layout.astro";
+import OverlapCards from "../components/OverlapCards.astro";
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="My Portfolio">
 	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
+		<Header />
+
+		<Subsection addContainerStyles="min-h-screen" id="home">
+			<div class="grid md:my-auto md:grid-cols-2 gap-x-12">
+				<!-- Intro -->
+				<div class="md:md:row-start-2">
+					<div>
+						<p class="text-center md:text-left">Hi, my name is</p>
+					</div>
+					<h1
+						class="text-center text-5xl md:text-6xl font-bold pt-1 pb-4 self-center leading-none md:text-left"
+					>
+						Ryan Suzuki Wong
+					</h1>
+					<p class="text-center md:text-left">
+						Welcome to my Portfolio. Nice to meet you!
+					</p>
+				</div>
+
+				<!-- Image -->
+				<img
+					src="../../public/Ryan_Portrait_Cropped.jpg"
+					class="object-cover max-w-full max-h-64 mt-4 mx-auto md:max-h-full md:row-span-5 md:col-start-2 md:mr-0"
+					alt=""
+				/>
+
+				<!-- Description -->
+				<p class="text-center mt-8 md:text-left">
+					I am a software engineer based in San Francisco CA. UC Irvine graduate
+					with B.S. in Computer Science
+				</p>
+
+				<!-- Tags -->
+				<div
+					class="mt-4 flex flex-col flex-wrap gap-2 justify-center items-center md:justify-start md:flex-row md:col-start-1"
+				>
+					<Tag text="Software Engineer" />
+					<Tag text="Full Stack Developer" />
+					<Tag text="UI / UX" />
+				</div>
+			</div>
+		</Subsection>
+
+		<Subsection title="My Expertise" id="expertise">
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+				<Box
+					iconPath="../../public/computer-code.svg"
+					title="Software Development"
+					text="Experienced in OOP and functional languages. (such as Python, \
+					Javascript, Typescript, C++, Java)"
+				/>
+				<Box
+					iconPath="../../public/computer-code.svg"
+					title="SQL Database / Scripting"
+					text="Passionate in SQL and NoSQL DB (such as document and graph DB) management \
+					and scripting. (Postgres, MySQL, Mongo DB, Couch DB, Cassandra, Neo4J)"
+				/>
+				<Box
+					iconPath="../../public/computer-code.svg"
+					title="Mobile Development"
+					text="Skilled in developing hybrid mobile apps with React Native / Expo (a \
+					framework that transpiles JS/TS to native IOS and Android modules)"
+				/>
+			</div>
+		</Subsection>
+
+		<Subsection title="Experience" id="experience">
+			<div class="flex flex-col gap-32">
+				<OverlapCards
+					title="Nutripair"
+					imagePath="../../public/DSC_3180.JPG"
+					tags={["React Native", "Postgres", "AWS"]}
+				>
+					<p slot="description">
+						Mobile App to help users with strict diets and allergies match with
+						restaurants that can best accomodate to their needs.
+					</p>
+				</OverlapCards>
+
+				<OverlapCards
+					title="RBVI - UCSF"
+					imagePath="../../public/DSC_3180.JPG"
+					tags={["Python", "PyQT", "HTML / CSS"]}
+					swapSides={true}
+				>
+					<div slot="description">
+						<b>Resource for Biocomputing and Visual Informatics (RBVI).</b>
+						<a
+							href="https://www.cgl.ucsf.edu/Overview/index.html"
+							class="text-blue-800">(Link)</a
+						>
+						<p>
+							Designed 3d molecular visualization tool with a team of developers
+							for ChimeraX (software used by biochemists) by embedding
+							dynamically generated charts/graphs with JavaScript and HTML into
+							a PyQT widget. Developed parsers for molecular format files (SYBYL
+							representation) using Python to translate into a 3D visual model
+							of proteins.
+						</p>
+					</div>
+				</OverlapCards>
+
+				<OverlapCards
+					title="Level 8 Construction"
+					imagePath="../../public/DSC_3180.JPG"
+					tags={["React Native", "MySQL"]}
+				>
+					<p slot="description">
+						(STILL UNDER CONSTRUCTION) Mobile App to help track worker
+						timesheets efficient and hasle free.
+					</p>
+				</OverlapCards>
+			</div>
+		</Subsection>
+
+		<Subsection title="Contact Me" id="contact" />
 	</main>
 </Layout>
-
-<style>
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
-	}
-	h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
-	}
-	.instructions code {
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
-</style>

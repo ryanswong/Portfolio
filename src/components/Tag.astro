@@ -1,0 +1,12 @@
+---
+export interface Props {
+  text: string;
+  additionalStyles?: string;
+}
+const { text, additionalStyles = false } = Astro.props;
+const containerStyle = `${additionalStyles} w-fit bg-gray-300 px-4 py-1 rounded-full `
+---
+
+<div class={containerStyle}>
+  <span class="whitespace-nowrap">{text}</span>
+</div>

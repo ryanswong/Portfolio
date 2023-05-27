@@ -10,8 +10,13 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/preact": "^2.2.0",
     "@astrojs/tailwind": "^3.1.2",
     "astro": "^2.4.2",
+    "preact": "^10.6.5",
     "tailwindcss": "^3.0.24"
+  },
+  "devDependencies": {
+    "tailwind-scrollbar": "^3.0.4"
   }
 }
