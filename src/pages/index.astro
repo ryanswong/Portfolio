@@ -1,6 +1,6 @@
 ---
 import Header from "../components/Header.astro";
-import Subsection from "../layouts/Subsection.astro";
+import Subsection from "../layouts/Section.astro";
 import Box from "../components/Box.astro";
 import Tag from "../components/Tag.astro";
 import Layout from "../layouts/Layout.astro";
@@ -8,9 +8,8 @@ import OverlapCards from "../components/OverlapCards.astro";
 ---
 
 <Layout title="My Portfolio">
+	<Header />
 	<main>
-		<Header />
-
 		<Subsection addContainerStyles="min-h-screen" id="home">
 			<div class="grid md:my-auto md:grid-cols-2 gap-x-12">
 				<!-- Intro -->
@@ -19,7 +18,7 @@ import OverlapCards from "../components/OverlapCards.astro";
 						<p class="text-center md:text-left">Hi, my name is</p>
 					</div>
 					<h1
-						class="text-center text-5xl md:text-6xl font-bold pt-1 pb-4 self-center leading-none md:text-left"
+						class="text-center text-5xl font-bold pt-1 pb-4 self-center leading-none md:text-6xl md:text-left md:my-4"
 					>
 						Ryan Suzuki Wong
 					</h1>
@@ -30,13 +29,13 @@ import OverlapCards from "../components/OverlapCards.astro";
 
 				<!-- Image -->
 				<img
-					src="../../public/Ryan_Portrait_Cropped.jpg"
-					class="object-cover max-w-full max-h-64 mt-4 mx-auto md:max-h-full md:row-span-5 md:col-start-2 md:mr-0"
+					src="Ryan_Portrait_Cropped.jpg"
+					class="object-cover max-w-full max-h-64 mt-4 mx-auto md:mt-0 md:max-h-full md:row-span-5 md:col-start-2 md:mr-0"
 					alt=""
 				/>
 
 				<!-- Description -->
-				<p class="text-center mt-8 md:text-left">
+				<p class="text-center mt-4 md:text-left">
 					I am a software engineer based in San Francisco CA. UC Irvine graduate
 					with B.S. in Computer Science
 				</p>
@@ -55,19 +54,19 @@ import OverlapCards from "../components/OverlapCards.astro";
 		<Subsection title="My Expertise" id="expertise">
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 				<Box
-					iconPath="../../public/computer-code.svg"
+					iconPath="computer-code.svg"
 					title="Software Development"
 					text="Experienced in OOP and functional languages. (such as Python, \
 					Javascript, Typescript, C++, Java)"
 				/>
 				<Box
-					iconPath="../../public/computer-code.svg"
+					iconPath="computer-code.svg"
 					title="SQL Database / Scripting"
 					text="Passionate in SQL and NoSQL DB (such as document and graph DB) management \
 					and scripting. (Postgres, MySQL, Mongo DB, Couch DB, Cassandra, Neo4J)"
 				/>
 				<Box
-					iconPath="../../public/computer-code.svg"
+					iconPath="computer-code.svg"
 					title="Mobile Development"
 					text="Skilled in developing hybrid mobile apps with React Native / Expo (a \
 					framework that transpiles JS/TS to native IOS and Android modules)"
@@ -79,8 +78,9 @@ import OverlapCards from "../components/OverlapCards.astro";
 			<div class="flex flex-col gap-32">
 				<OverlapCards
 					title="Nutripair"
-					imagePath="../../public/DSC_3180.JPG"
+					imagePath="DSC_3180.JPG"
 					tags={["React Native", "Postgres", "AWS"]}
+					swapSides={true}
 				>
 					<p slot="description">
 						Mobile App to help users with strict diets and allergies match with
@@ -90,9 +90,8 @@ import OverlapCards from "../components/OverlapCards.astro";
 
 				<OverlapCards
 					title="RBVI - UCSF"
-					imagePath="../../public/DSC_3180.JPG"
+					imagePath="DSC_3180.JPG"
 					tags={["Python", "PyQT", "HTML / CSS"]}
-					swapSides={true}
 				>
 					<div slot="description">
 						<b>Resource for Biocomputing and Visual Informatics (RBVI).</b>
@@ -113,8 +112,9 @@ import OverlapCards from "../components/OverlapCards.astro";
 
 				<OverlapCards
 					title="Level 8 Construction"
-					imagePath="../../public/DSC_3180.JPG"
+					imagePath="DSC_3180.JPG"
 					tags={["React Native", "MySQL"]}
+					swapSides={true}
 				>
 					<p slot="description">
 						(STILL UNDER CONSTRUCTION) Mobile App to help track worker

@@ -9,9 +9,10 @@ export interface Props {
 }
 const { title, tags, imagePath, swapSides = false } = Astro.props;
 
-const tagsStyle = `flex flex-wrap gap-2 w-3/5 ${
-  swapSides ? "" : "ml-auto justify-end"
-}`;
+const tagsStyle = `flex flex-wrap gap-2 ${swapSides ? "" : "justify-end"}`;
+
+const descriptionBgColor = "bg-gray-200 bg-opacity-80 dark:bg-gray-700 dark:bg-opacity-80"
+
 ---
 
 <!-- mobile size -->
@@ -28,11 +29,11 @@ const tagsStyle = `flex flex-wrap gap-2 w-3/5 ${
     </div>
   </div>
 
-  <div class="bg-gray-200 bg-opacity-80 px-4 pt-2 pb-6">
+  <div class=`${descriptionBgColor} px-4 pt-2 pb-6`>
     <!-- Description -->
     <!-- <p>{description}</p> -->
-    <slot name="description"/>
-    
+    <slot name="description" />
+
     <!-- Tags -->
     {
       tags && (
@@ -59,23 +60,20 @@ const tagsStyle = `flex flex-wrap gap-2 w-3/5 ${
     class=`absolute w-3/5 flex flex-1 flex-col justify-evenly ${swapSides ? "top-0 bottom-0 left-0" : "top-0 bottom-0 right-0 text-right"}`
   >
     <!-- Title -->
-
-    <!-- FIXME -->
-    <h3 class=`w-2/5 text-2xl font-medium ${swapSides ? "" : "ml-auto"}`>
+    <h3 class=`text-2xl font-medium ${swapSides ? "" : "ml-auto"}`>
       {title}
     </h3>
 
     <!-- Description -->
     <div
-      class=`w-full bg-gray-200 bg-opacity-80 pr-8 pl-6 py-3 shadow-lg h-1/2 overflow-auto scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-200 ${swapSides ? "" : "ml-auto"}`
+      class=`w-full ${descriptionBgColor} pr-8 pl-6 py-3 shadow-lg h-1/2 overflow-auto scrollbar-thin scrollbar-thumb-slate-200 dark:scrollbar-thumb-slate-600 ${swapSides ? "" : "ml-auto"}`
     >
       <!-- <p>{description}</p> -->
-      <!-- <slot name="description"/> -->
-
+      <slot name="description" />
+      <!-- 
       <p>
         Designed 3d molecular visualization
-      </p>
-
+      </p> -->
     </div>
 
     <!-- Tags -->
