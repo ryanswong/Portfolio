@@ -3,14 +3,15 @@ export interface Props {
   title?: string;
   id: string;
   fullPage?: boolean;
+  addedStyles?: string;
 }
-const { title, id, fullPage=false } = Astro.props;
+const { title, id, fullPage=false, addedStyles } = Astro.props;
 ---
 
 <div
   id={id}
-  class=`overflow-x-hidden scroll-mt-20 px-12 max-w-screen-lg mx-auto ${fullPage ? "min-h-screen flex flex-col" : "mb-48"}`
+  class=`overflow-x-clip scroll-mt-32 px-12 max-w-screen-lg mx-auto ${fullPage ? "h-screen flex flex-col" : "mb-48"} ${addedStyles}`
 >
-  {title ? <h2 class="mb-16 text-5xl font-semibold m-auto">{title}</h2> : null}
+  {title ? <h2 class="mb-16 text-5xl font-bold m-auto">{title}</h2> : null}
   <slot />
 </div>

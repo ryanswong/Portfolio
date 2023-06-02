@@ -12,7 +12,7 @@ import { Icon } from "astro-icon";
   <Header />
   <main>
     <Subsection fullPage={true} id="home">
-      <div class="grid md:my-auto md:grid-cols-2 gap-x-12">
+      <div class="grid my-auto md:grid-cols-2 gap-x-12 py-24">
         <!-- Intro -->
         <div class="md:md:row-start-2">
           <div>
@@ -52,7 +52,7 @@ import { Icon } from "astro-icon";
       </div>
     </Subsection>
 
-    <Subsection title="My Expertise" id="expertise">
+    <Subsection title="Expertise" id="expertise" addedStyles="mt-24">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <Box
           iconName="computer"
@@ -147,7 +147,7 @@ import { Icon } from "astro-icon";
       </div>
     </Subsection>
 
-    <Subsection title="Contact Me" id="contact">
+    <Subsection title="Contact Me" id="contact" addedStyles="mb-24">
       <p class="text-xl">
         Feel free to reach out to me at any time! I am always open to new
         opportunities and connections.
