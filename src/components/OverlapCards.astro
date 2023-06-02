@@ -3,15 +3,19 @@ import Tag from "./Tag.astro";
 
 export interface Props {
   title: string;
+  subtitle?: string;
   imagePath: string;
   tags?: string[];
   swapSides?: boolean; // only matters for desktop version
 }
-const { title, tags, imagePath, swapSides = false } = Astro.props;
+const { title, subtitle, tags, imagePath, swapSides = false } = Astro.props;
 
-const tagsStyle = `flex flex-wrap gap-2 ${swapSides ? "" : "justify-end"}`;
+const tagsStyle = `w-3/5 flex flex-wrap gap-2 ${
+  swapSides ? "" : "justify-end ml-auto"
+}`;
 
-const descriptionBgColor = "bg-gray-200 bg-opacity-80 dark:bg-gray-700 dark:bg-opacity-80"
+const descriptionBgColor =
+  "bg-gray-200 bg-opacity-80 dark:bg-gray-700 dark:bg-opacity-80";
 
 ---
 
@@ -21,11 +25,13 @@ const descriptionBgColor = "bg-gray-200 bg-opacity-80 dark:bg-gray-700 dark:bg-o
     <!-- Image -->
     <img class="object-contain" src={imagePath} alt="" />
 
-    <!-- Title -->
-    <div class="absolute top-0 bg-white bg-opacity-50 w-full py-2 px-4">
+    <div class="absolute top-0 bg-white bg-opacity-50 dark:bg-black dark:bg-opacity-50 w-full py-2 px-4">
+      <!-- Title -->
       <h3 class=`text-2xl font-medium`>
         {title}
       </h3>
+      <!-- Subtitle -->
+      {subtitle && <p class="text-sm">{subtitle}</p>}
     </div>
   </div>
 
@@ -57,23 +63,19 @@ const descriptionBgColor = "bg-gray-200 bg-opacity-80 dark:bg-gray-700 dark:bg-o
   />
 
   <div
-    class=`absolute w-3/5 flex flex-1 flex-col justify-evenly ${swapSides ? "top-0 bottom-0 left-0" : "top-0 bottom-0 right-0 text-right"}`
+    class=`w-full absolute flex flex-col justify-evenly top-0 bottom-0 ${swapSides ? "left-0" : "right-0"}`
   >
     <!-- Title -->
-    <h3 class=`text-2xl font-medium ${swapSides ? "" : "ml-auto"}`>
+    <h3 class=`text-2xl w-2/5 font-medium ${swapSides ? "" : "ml-auto text-right"}`>
       {title}
     </h3>
 
     <!-- Description -->
     <div
-      class=`w-full ${descriptionBgColor} pr-8 pl-6 py-3 shadow-lg h-1/2 overflow-auto scrollbar-thin scrollbar-thumb-slate-200 dark:scrollbar-thumb-slate-600 ${swapSides ? "" : "ml-auto"}`
+      class=`w-3/5 ${descriptionBgColor} text-left px-8 py-4 shadow-lg dark:shadow-gray-600/40 h-1/2 overflow-auto 
+      scrollbar-thin scrollbar-thumb-slate-200 dark:scrollbar-thumb-slate-600 ${swapSides ? "" : "ml-auto"}`
     >
-      <!-- <p>{description}</p> -->
       <slot name="description" />
-      <!-- 
-      <p>
-        Designed 3d molecular visualization
-      </p> -->
     </div>
 
     <!-- Tags -->
@@ -81,7 +83,7 @@ const descriptionBgColor = "bg-gray-200 bg-opacity-80 dark:bg-gray-700 dark:bg-o
       tags && (
         <div class={tagsStyle}>
           {tags.map((tag) => (
-            <Tag text={tag} additionalStyles="shadow-lg" />
+            <Tag text={tag} additionalStyles="shadow-lg dark:shadow-indigo-600/40" />
           ))}
         </div>
       )
