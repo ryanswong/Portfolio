@@ -10,7 +10,7 @@ const { title, id, fullPage=false, addedStyles } = Astro.props;
 
 <div
   id={id}
-  class=`overflow-x-clip scroll-mt-32 px-12 max-w-screen-lg mx-auto ${fullPage ? "h-screen flex flex-col" : "mb-48"} ${addedStyles}`
+  class=`overflow-x-clip scroll-mt-32 px-12 max-w-screen-lg mx-auto ${fullPage ? "min-h-screen flex flex-col" : "mb-48"} ${addedStyles}`
 >
   {title ? <h2 class="mb-16 text-5xl font-bold m-auto">{title}</h2> : null}
   <slot />
