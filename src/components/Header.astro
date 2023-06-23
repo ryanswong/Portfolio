@@ -1,5 +1,5 @@
 ---
-import Hamburger from "./Hamburger.astro";
+import Hamburger from "./Hamburger";
 import ThemeToggle from "./ThemeToggle";
 
 const navs = [
@@ -42,7 +42,7 @@ const navs = [
       <ThemeToggle client:load />
 
       <div class="md:hidden">
-        <Hamburger />
+        <Hamburger client:load />
       </div>
     </div>
   </nav>

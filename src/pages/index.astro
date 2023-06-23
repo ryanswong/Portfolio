@@ -6,10 +6,15 @@ import Tag from "../components/Tag.astro";
 import Layout from "../layouts/Layout.astro";
 import OverlapCards from "../components/OverlapCards.astro";
 import { Icon } from "astro-icon";
+import { Image } from "astro:assets";
+
+import profileImage from "../assets/Ryan_Portrait_Cropped.jpg";
+import nutripairImage from "../assets/Nutripair-Portfolio-Screenshots.jpg";
+import RBVIImage from "../assets/ChimeraX-ViewdockX.png";
+import tempImage from "../assets/DSC_3180.jpg";
 ---
 
-<Lay
-out title="My Portfolio">
+<Layout title="My Portfolio">
   <Header />
   <main>
     <Subsection fullPage={true} id="home">
@@ -24,16 +29,21 @@ out title="My Portfolio">
           >
             Ryan Suzuki Wong
           </h1>
-          <p class="text-center md:text-left">
+          <!-- <p class="text-center md:text-left">
             Welcome to my Portfolio. Nice to meet you!
-          </p>
+          </p> -->
         </div>
 
         <!-- Image -->
-        <img
+        <!-- <img
           src="Ryan_Portrait_Cropped.jpg"
           class="object-cover max-w-full max-h-64 mt-4 mx-auto md:mt-0 md:max-h-full md:row-span-5 md:col-start-2 md:mr-0"
           alt=""
+        /> -->
+        <Image
+          src={profileImage}
+          class="object-contain object-top w-full max-w-sm max-h-64 mt-4 mx-auto md:mt-0 md:max-h-full md:max-w-full md:row-span-5 md:col-start-2 md:mr-0"
+          alt="ryan's profile image in shirt and tie"
         />
 
         <!-- Description -->
@@ -46,9 +56,12 @@ out title="My Portfolio">
         <div
           class="mt-4 flex flex-col flex-wrap gap-2 justify-center items-center md:justify-start md:flex-row md:col-start-1"
         >
-          <Tag text="Software Engineer" additionalStyles="w-64 text-center"/>
-          <Tag text="Full Stack Developer" additionalStyles="w-64 text-center"/>
-          <Tag text="UI / UX" additionalStyles="w-64 text-center"/>
+          <Tag text="Software Engineer" additionalStyles="w-64 text-center" />
+          <Tag
+            text="Full Stack Developer"
+            additionalStyles="w-64 text-center"
+          />
+          <Tag text="UI / UX" additionalStyles="w-64 text-center" />
         </div>
       </div>
     </Subsection>
@@ -80,8 +93,9 @@ out title="My Portfolio">
       <div class="flex flex-col gap-16 md:gap32">
         <OverlapCards
           title="Nutripair"
-					subtitle="Full Stack Technical Lead"
-          imagePath="Nutripair-Portfolio-Screenshots.jpg"
+          subtitle="Full Stack Technical Lead"
+          image={nutripairImage}
+          alt="Series of screenshots of the Nutripair Mobile app displaying home page as well as restaurant and menu item page for Din Tai Fung and In-n-Out"
           tags={["React Native", "Postgres", "AWS"]}
           swapSides={true}
         >
@@ -109,8 +123,9 @@ out title="My Portfolio">
 
         <OverlapCards
           title="RBVI - UCSF"
-					subtitle="Software Developer Intern"
-          imagePath="ChimeraX-ViewdockX.png"
+          subtitle="Software Developer Intern"
+          image={RBVIImage}
+          alt="screenshot of UCSF ChimeraX software interface displaying 3D view of a sample module with a "
           tags={["Python", "PyQT", "HTML / CSS"]}
         >
           <div slot="description">
@@ -135,8 +150,9 @@ out title="My Portfolio">
 
         <OverlapCards
           title="Level 8 Construction"
-					subtitle="Software Developer / IT / Administrator"
-          imagePath="DSC_3180.JPG"
+          subtitle="Software Developer / IT / Administrator"
+          image={tempImage}
+          alt="tempory image (night sky at the beach)"
           tags={["React Native", "MySQL"]}
           swapSides={true}
         >

@@ -1,14 +1,16 @@
 ---
 import Tag from "./Tag.astro";
+import { Image } from "astro:assets";
 
 export interface Props {
   title: string;
   subtitle?: string;
-  imagePath: string;
+  image: ImageMetadata;
+  alt: string;
   tags?: string[];
   swapSides?: boolean; // only matters for desktop version
 }
-const { title, subtitle, tags, imagePath, swapSides = false } = Astro.props;
+const { title, subtitle, tags, image, alt="", swapSides = false } = Astro.props;
 
 const tagsStyle = `w-3/5 flex flex-wrap gap-2 ${
   swapSides ? "" : "justify-end ml-auto"
@@ -16,16 +18,18 @@ const tagsStyle = `w-3/5 flex flex-wrap gap-2 ${
 
 const descriptionBgColor =
   "bg-gray-200 bg-opacity-80 dark:bg-gray-700 dark:bg-opacity-80";
-
 ---
 
 <!-- mobile size -->
 <div class="md:hidden w-full">
   <div class="relative h-contain">
     <!-- Image -->
-    <img class="object-contain" src={imagePath} alt="" />
+    <Image src={image} alt={alt} class="object-contain" />
+    <!-- <img class="object-contain" src={image} alt="" /> -->
 
-    <div class="absolute top-0 bg-white bg-opacity-50 dark:bg-black dark:bg-opacity-50 w-full py-2 px-4">
+    <div
+      class="absolute top-0 bg-white bg-opacity-50 dark:bg-black dark:bg-opacity-50 w-full py-2 px-4"
+    >
       <!-- Title -->
       <h3 class=`text-2xl font-medium`>
         {title}
@@ -56,24 +60,28 @@ const descriptionBgColor =
 <!-- desktop size -->
 <div class="relative hidden md:block">
   <!-- image -->
-  <img
-    class=`object-contain w-3/5 ${swapSides && "ml-auto"}`
-    src={imagePath}
-    alt=""
-  />
+    
+  <div class=`object-contain w-3/5 ${swapSides && "ml-auto"}`>
+    <Image
+      src={image}
+      alt={alt}
+    />
+  </div>
 
   <div
-    class=`w-full absolute flex flex-col justify-evenly top-0 bottom-0 ${swapSides ? "left-0" : "right-0 ml-auto text-right"}`
+    class=`w-full absolute flex flex-col justify-evenly top-0 ${swapSides ? "left-0" : "right-0 ml-auto text-right"}`
   >
     <div>
       <!-- Title -->
-      <h3 class=`text-2xl w-2/5 font-bold ${swapSides ? "" : "ml-auto text-right"}`>
-      {title}
-    </h3>
-    
-    <!-- Subtitle -->
-    {subtitle && <p class="text-md">{subtitle}</p>}
-  </div>
+      <h3
+        class=`text-2xl w-2/5 font-bold ${swapSides ? "" : "ml-auto text-right"}`
+      >
+        {title}
+      </h3>
+
+      <!-- Subtitle -->
+      {subtitle && <p class="text-md">{subtitle}</p>}
+    </div>
 
     <!-- Description -->
     <div
@@ -88,7 +96,10 @@ const descriptionBgColor =
       tags && (
         <div class={tagsStyle}>
           {tags.map((tag) => (
-            <Tag text={tag} additionalStyles="shadow-lg dark:shadow-indigo-600/40" />
+            <Tag
+              text={tag}
+              additionalStyles="shadow-lg dark:shadow-indigo-600/40"
+            />
           ))}
         </div>
       )
