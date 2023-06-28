@@ -1,11 +1,8 @@
 import { useState } from "preact/hooks";
+import "../styles/hamburger.css"
 
-// inspired by https://konradstaniszewski.com/blog/tailwind-hamburger
-// FIXME make sure to make this my own thing. change it up. If I forget to change it up substantially, all credits to the link above.
-
-export default function Hamburger (){
+export default function Hamburger() {
   const [isOpen, setIsOpen] = useState(false);
-  const genericHamburgerLine = `h-1 w-6 my-1 rounded-full bg-black dark:bg-white transition ease transform duration-300`;
 
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -14,27 +11,16 @@ export default function Hamburger (){
 
   // border-2 border-black dark:border-white rounded
 
+  const lineClass = "line origin-center trasition duration-300 ease-in-out"
+
   return (
-    <button
-      className="flex flex-col h-12 w-12 justify-center items-center group"
-      onClick={() => setIsOpen(!isOpen)}
-    >
-      <div
-        className={`${genericHamburgerLine} ${isOpen
-            ? "rotate-45 translate-y-3 opacity-50 group-hover:opacity-100"
-            : "opacity-50 group-hover:opacity-100"
-          }`}
-      />
-      <div
-        className={`${genericHamburgerLine} ${isOpen ? "opacity-0" : "opacity-50 group-hover:opacity-100"
-          }`}
-      />
-      <div
-        className={`${genericHamburgerLine} ${isOpen
-            ? "-rotate-45 -translate-y-3 opacity-50 group-hover:opacity-100"
-            : "opacity-50 group-hover:opacity-100"
-          }`}
-      />
+    <button onClick={handleClick}>
+      <svg class="hamburger border" viewBox="0 0 100 100" width={50}>
+        <rect class={`${lineClass} top ${isOpen ? "open rotate-45" : ""}`} width="80" height="10" rx="5" x="10" y="25"></rect>
+        <rect class={`${lineClass} middle ${isOpen ? "open opacity-0": ""}`} width="80" height="10" rx="5" x="10" y="45"></rect>
+        <rect class={`${lineClass} bottom ${isOpen ? "open -rotate-45" : ""}`} width="80" height="10" rx="5" x="10" y="65 "></rect>
+
+      </svg>
     </button>
   );
 };
