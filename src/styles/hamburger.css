@@ -1,11 +1,34 @@
 button .hamburger {
-  background: rgb(246, 218, 218);
+  
 }
 
 button .hamburger .line {
-  fill: #000000;
+  transition:
+    y 0.2s ease-in 0.2s,
+    rotate 0.2s ease-in,
+    opacity 0s 0.2s;
+  transform-origin: center;
 }
 
-button .hamburger .open{
-  fill: #a73434;
+button .hamburger .line.open {
+  transition:
+    y 0.2s ease-in,
+    rotate 0.2s ease-in 0.2s,
+    opacity 0.2s;
+}
+
+button .hamburger .open:is(.top, .bottom) {
+  y: 45;
+}
+
+button .hamburger .top.open {
+  rotate: 45deg;
+}
+
+button .hamburger .bottom.open {
+  rotate: -45deg;
+}
+
+button .hamburger .middle.open {
+  opacity: 0;
 }
