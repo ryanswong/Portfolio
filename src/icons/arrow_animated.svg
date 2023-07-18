@@ -1,0 +1,9 @@
+<?xml version="1.0" standalone="no"?>
+<svg id="Frame19" width="167" height="214" viewBox="0 0 167 214" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 100%; max-height: 100%;">
+<path d="M83.5 8V206" stroke-width="16" stroke-linecap="round" stroke-dasharray="0,0,0,198"><animate attributeType="XML" attributeName="stroke-dasharray" repeatCount="1" dur="1s" values="0,0,0,198; 
+          0,99,99,0; 
+          198,0,0,0" keyTimes="0; 0.5; 1" fill="freeze"></animate></path>
+<path d="M8 130.5L83.5 206L159 130.5" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0,0,0,213.54624938964844"><animate attributeType="XML" attributeName="stroke-dasharray" repeatCount="1" dur="1s" begin="1s" values="0,0,0,213.54624938964844; 
+          0,106.77312469482422,106.77312469482422,0; 
+          213.54624938964844,0,0,0" keyTimes="0; 0.5; 1" fill="freeze"></animate></path>
+<setting>{"type":"direct","speed":20,"random":1,"shift":1,"size":1,"rupture":50}</setting></svg>

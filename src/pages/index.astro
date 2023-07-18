@@ -1,5 +1,5 @@
 ---
-// import "../styles/global.css";
+import "../styles/global.css";
 import Header from "../components/Header";
 import Subsection from "../layouts/Section.astro";
 import Box from "../components/Box.astro";
@@ -16,7 +16,7 @@ import tempImage from "../assets/DSC_3180.jpg";
 ---
 
 <Layout title="My Portfolio">
-  <Header client:load/>
+  <Header client:load />
   <main>
     <Subsection fullPage={true} id="home">
       <div class="grid my-auto md:grid-cols-2 gap-x-12">
@@ -46,8 +46,8 @@ import tempImage from "../assets/DSC_3180.jpg";
 
         <!-- Description -->
         <p class="text-center mt-4 md:text-left">
-          I am a software engineer based in San Francisco CA. UC Irvine graduate
-          with B.S. in Computer Science
+          I am a software engineer based in San Francisco CA and a UC Irvine
+          graduate with B.S. in Computer Science
         </p>
 
         <!-- Tags -->
@@ -61,6 +61,17 @@ import tempImage from "../assets/DSC_3180.jpg";
           />
           <Tag text="UI / UX" additionalStyles="w-64 text-center" />
         </div>
+
+        <a
+          href="#expertise"
+          class="hidden md:flex w-10 absolute left-0 right-0 mx-auto bottom-[15%]"
+          id="arrow"
+        >
+          <Icon
+            name="arrow_animated"
+            class="stroke-black dark:stroke-white stroke-[12px]"
+          />
+        </a>
       </div>
     </Subsection>
 
@@ -95,7 +106,6 @@ import tempImage from "../assets/DSC_3180.jpg";
           image={nutripairImage}
           alt="Series of screenshots of the Nutripair Mobile app displaying home page as well as restaurant and menu item page for Din Tai Fung and In-n-Out"
           tags={["React Native", "Postgres", "AWS"]}
-          swapSides={true}
         >
           <div slot="description">
             <p>
@@ -120,17 +130,17 @@ import tempImage from "../assets/DSC_3180.jpg";
         </OverlapCards>
 
         <OverlapCards
-          title="RBVI - UCSF"
+          title="Resource for Biocomputing and Visual Informatics (RBVI) - UCSF"
           subtitle="Software Developer Intern"
           image={RBVIImage}
           alt="screenshot of UCSF ChimeraX software interface displaying 3D view of a sample module with a "
           tags={["Python", "PyQT", "HTML / CSS"]}
+          swapSides={true}
         >
           <div slot="description">
-            <b>Resource for Biocomputing and Visual Informatics (RBVI).</b>
             <a
               href="https://www.cgl.ucsf.edu/Overview/index.html"
-              class="text-blue-800">(Link)</a
+              class="text-blue-800">(RBVI Link)</a
             >
             <li>
               Designed 3d molecular visualization tool with a team of developers
@@ -152,12 +162,18 @@ import tempImage from "../assets/DSC_3180.jpg";
           image={tempImage}
           alt="tempory image (night sky at the beach)"
           tags={["React Native", "MySQL"]}
-          swapSides={true}
         >
-          <p slot="description">
-            Developing a Mobile App to help track worker timesheets efficiently
-            and hassle-free. (still under development)
-          </p>
+          <div slot="description">
+            <li>
+              Developing a Mobile App to help track worker timesheets
+              efficiently and hassle-free. (still under development)
+            </li>
+            <li>
+              Helping company migrate from old legacy systems to new cloud-based
+              technologies to reduce costs and improve efficiency for
+              administrative and field work.
+            </li>
+          </div>
         </OverlapCards>
       </div>
     </Subsection>
