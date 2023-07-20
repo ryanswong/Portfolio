@@ -2,8 +2,8 @@
     opacity: 0;
     cursor: pointer;
     animation:
-      3s ease-in-out 3s 1 fadein, 
-      1s ease-in-out 3s infinite bounce;
+      3s ease-in-out 2s 1 fadein, 
+      1s ease-in-out 2s infinite bounce;
     animation-fill-mode: forwards;
 }
 
