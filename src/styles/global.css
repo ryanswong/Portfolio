@@ -1,8 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('/fonts/Roboto') format('TrueType');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  * {
+    @apply font-sans;
+    @apply leading-7;
+    font-family: ;
+  }
+}
+
 #arrow {
     opacity: 0;
     cursor: pointer;
     animation:
-      3s ease-in-out 2s 1 fadein, 
+      3s ease-in-out 0.5s 1 fadein, 
       1s ease-in-out 2s infinite bounce;
     animation-fill-mode: forwards;
 }
